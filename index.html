@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Counter</title>
+
+</head>
+<body>
+
+    <div class="content">
+        <h2>Time Counter</h2>
+        <div id="timer">
+            <b id="days"></b> Days <b id="hours"> </b> Hours <b id="mins"> </b> Minutes <b id="secs"> </b> Seconds
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function timer() {
+
+            var start = new Date(2008,8,1);
+            var time = new Date() - start;
+            var days = ~~(time / (24*60*60*1000));
+            // var hours = ~~((time-days*24*60*60*1000) / (60*60*1000));
+            var hours = ~~(time / 1000 / 60 / 60 % 24); //余数
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            var mins = ~~(time / 1000 / 60 % 60);
+            if (mins < 10) {
+                mins = "0" + mins;
+            }
+            var secs = ~~(time / 1000 % 60);
+            if (secs < 10) {
+                secs = "0" + secs;
+            }
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("mins").innerHTML = mins;
+            document.getElementById("secs").innerHTML = secs;
+        }
+        timer();
+        setInterval(timer,1000);    // 按照制定的周期（毫秒）来调用函数
+
+
+
+
+    </script>
+</body>
+</html>
